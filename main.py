@@ -1,1 +1,2 @@
-print ("Projekt Warcaby!") 
+print ("Projekt Warcaby!")
+print ("Zmiana")
