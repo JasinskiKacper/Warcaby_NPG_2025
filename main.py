@@ -1,2 +1,2 @@
-print ("Projekt Warcaby!")
-print ("Zmiana")
+def main():
+    print("Projekt Warcaby!")
