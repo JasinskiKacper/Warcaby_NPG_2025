@@ -5,7 +5,7 @@
   Będzie ona korzystała z interfejsu graficznego, który zapewnia biblioteka tkinter, tworząc przyjemny intefejs dla gracza.
   Głównym założeniem jest możliwość ciągłego rozwoju i łatwość rozbudowy, w przyszłości gra będzie pozwalała na
   dodatnie takich opcji jak tryb jednoosobowy z AI, rozgrywka wieloosobowa jak i tych mniejszych dotyczących
-  np stylu graficznego czy dodania licznka czasu.
+  np stylu graficznego czy dodania licznika czasu.
 
   Gra będzie oparta na prostym GUI (w tym przypadku tkinter), brak to złożonych obliczeń, grafiki 3D. Może działać nawet na archaicznym sprzęcie.
 
@@ -14,4 +14,15 @@
       Windows 10 jest zalecany ponieważ jest nadal wspierany przez Microsoft, a to zapewnia bezpieczeństwo. Dla innych wyżej wymienionych systemów operacyjnych
       sprawa ma się podobnie. Starsze wersje mogą mieć problemy z biblioteką tkinter i wsparciem dla Pythona.
 
-  
+  Jako domyślne przyjmujemy następujące zasady warcabów:
+  - plansza 8x8 z dwoma rzędami pionków ustawionych na czarnych polach ponumerowanych od 0 do 7
+  - zaczyna kolor biały
+  - pionki poruszają się o jedno pole po ukosie do przodu
+  - bicie jest możliwe, gdy pionek przeciwnika jest bezpośrednio o jedno pole na ukos od pionka gracza, i pole za pionkiem przeciwnika jest wolne (po biciu pionek gracza ląduje na polu za zbitym pionkiem)
+  - w przypadku, gdy po zbiciu nowa pozycja gracza umożliwia kolejne zbicie w tej samej turze, gracz jest zobowiązany do wykonania takiego ruchu
+  - w ogólnym przypadku bicie nie jest obowiązkowe
+  - bicie w tył jest niemożliwe
+  - po dojściu pionkiem do końca planszy gracz otrzymuje w zamian pionka królówkę
+  - królówka może poruszać się dowolną ilość pól po ukosie, zarówno w przód jak i w tył (bicie również wykonuje w obu kierunkach)
+  - nie ma ograniczenia czasowego dla wykonania ruchu
+  - gra kończy się, gdy jeden z graczy nie ma już żadnych figur - wygrywa jego przeciwnik
