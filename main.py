@@ -20,3 +20,13 @@ class CheckersGUI:
         self.init_board()
         self.canvas.bind("<Button-1>", self.click)
         self.draw_board()
+
+    def init_board(self):
+        for row in range(2):
+            for col in range(8):
+                if (row + col) % 2 == 1:
+                    self.board[row][col] = Piece('b')
+        for row in range(6, 8):
+            for col in range(8):
+                if (row + col) % 2 == 1:
+                    self.board[row][col] = Piece('w')
