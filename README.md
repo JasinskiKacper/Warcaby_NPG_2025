@@ -10,10 +10,22 @@
   Gra będzie oparta na prostym GUI (w tym przypadku tkinter), brak to złożonych obliczeń, grafiki 3D. Może działać nawet na archaicznym sprzęcie.
 
     System: Windows 10, Linux 22.04LTS, macOS 12;
-      tutaj może być dowolny z obsługą GUI i pozwalający na zainstalowanie pythona w wersji 3.7 i nowszej (pełne wsparcie dla popularnym konstrukcji składniowych)
-      Windows 10 jest zalecany ponieważ jest nadal wspierany przez Microsoft, a to zapewnia bezpieczeństwo. Dla innych wyżej wymienionych systemów operacyjnych
-      sprawa ma się podobnie. Starsze wersje mogą mieć problemy z biblioteką tkinter i wsparciem dla Pythona.
+      tutaj może być dowolny z obsługą GUI i pozwalający na zainstalowanie pythona w wersji 3.7 i nowszej, 
+      (pełne wsparcie dla popularnym konstrukcji składniowych). Windows 10 jest zalecany ponieważ jest nadal wspierany przez Microsoft, 
+      a to zapewnia bezpieczeństwo. Dla innych wyżej wymienionych systemów operacyjnych sprawa ma się podobnie. 
+      Starsze wersje mogą mieć problemy z biblioteką tkinter i wsparciem dla Pythona.
+      
+      
 
+    Grafika: Zintegrowana lub GT710 (Nvidia) lub HD6450 (Radeon);
+      wymagania co do układu graficznego nie są duże, gra nie obsługuję grafiki 3D czy rozbudowanego silnika
+      graficznego, zadaniem grafiki będzie wyświetlenie planszy o wymiarach 640 x 640 pikseli na której będą proste
+      geometryczne figury, zatem nawet stary zintegrowany układ graficzny z lat 2012 poradzi sobie bez problemów. 
+      Jako zalecenie dotyczące kart dedykowanych, wymienione wyżej układy obsługują DirectX 11 i mają sterowniki do
+      wskazanych wcześniej systemów, to pierwsze nie jest konieczne ale gwarantuje pełną kompatybilność z 
+      nowoczesnym środowiskiem. Mimo wszystko podane wymagania muszą zagwarantować możliwość rozwoju projektu,
+      które w tym przypadku jest pierwszorzędne.
+    
   Jako domyślne przyjmujemy następujące zasady warcabów:
   - plansza 8x8 z dwoma rzędami pionków ustawionych na czarnych polach ponumerowanych od 0 do 7
   - zaczyna kolor biały
