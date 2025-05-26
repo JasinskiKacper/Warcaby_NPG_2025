@@ -25,6 +25,19 @@
       wskazanych wcześniej systemów, to pierwsze nie jest konieczne ale gwarantuje pełną kompatybilność z 
       nowoczesnym środowiskiem. Mimo wszystko podane wymagania muszą zagwarantować możliwość rozwoju projektu,
       które w tym przypadku jest pierwszorzędne.
+
+    Procesor: 4 rdzenie, 2.5GHz;
+      zapewnia płynną pracę systemu w tle ,np przeglądarka. Tryb gry z AI może wymagać intensywniejszych obliczeń.
+      Jest to typowa specyfikacja budżetowych laptopów i PC.
+
+    Ram: 4GB
+      system operacyjny wymaga miniumum 2GB przy tym same wymagania gry są bardzo niskie (kilkanaście MB).
+      Optymalnym wyborem będzie 4GB.
+
+    Dysk: 200MB (sama gra)
+      sam skrypt waży w okolicach 50KB ale do tego należy doliczyć Python,tkinter, pliki tymczasowe jak i 
+      również ewentualne rozszerzenia.
+      
     
   Jako domyślne przyjmujemy następujące zasady warcabów:
   - plansza 8x8 z dwoma rzędami pionków ustawionych na czarnych polach ponumerowanych od 0 do 7
