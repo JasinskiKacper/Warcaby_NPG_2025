@@ -30,3 +30,7 @@ class CheckersGUI:
             for col in range(8):
                 if (row + col) % 2 == 1:
                     self.board[row][col] = Piece('w')
+
+    
+    def in_bounds(self, r, c):
+        return 0 <= r < 8 and 0 <= c < 8
