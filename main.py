@@ -43,3 +43,9 @@ class CheckersGUI:
 
     def in_bounds(self, r, c):
         return 0 <= r < 8 and 0 <= c < 8
+
+
+    def get_all_valid_moves(self):
+        moves = {}
+        if self.must_continue_capture and self.capture_origin:
+            captures = self.get_captures(*self.capture_origin)
