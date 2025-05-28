@@ -27,7 +27,7 @@ class CheckersGUI:
                 if (row + col) % 2 == 1:
                     self.board[row][col] = Piece('b')
         for row in range(6, 8):
-            for col in ra   nge(8):
+            for col in range(8):
                 if (row + col) % 2 == 1:
                     self.board[row][col] = Piece('w')
 
@@ -40,6 +40,12 @@ class CheckersGUI:
                 x2, y2 = x1 + 80, y1 + 80
                 self.canvas.create_rectangle(x1, y1, x2, y2, fill = colors[(r + c) % 2])
                 piece = self.board[r][c]
+                if piece:
+                    fill = "white" if piece.color == 'w' else "black"
+                    outline = "gold" if piece.king else "gray"
+                    self.canvas.create_oval(x1 + 10, y1 + 10, x2 - 10, y2 - 10, fill=fill, outline=outline, width=3)
+                    if piece.king:
+                        self.canvas.create_text(x1 + 40, y1 + 40, text="K", fill="red", font=("Arial", 24, "bold"))
 
     def in_bounds(self, r, c):
         return 0 <= r < 8 and 0 <= c < 8
