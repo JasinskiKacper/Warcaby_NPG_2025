@@ -47,6 +47,31 @@ class CheckersGUI:
                     if piece.king:
                         self.canvas.create_text(x1 + 40, y1 + 40, text="K", fill="red", font=("Arial", 24, "bold"))
 
+    def click(self, event):
+        r, c = event.y // 80, event.x // 80
+        if self.selected:
+            if (r, c) in self.valid_moves.get(self.selected, []):
+                self.make_move(self.selected[0], self.selected[1], r, c)
+                if self.must_continue_capture:
+                    self.selected = (r, c)
+                    self.valid_moves = {self.selected: self.get_captures(r, c)}
+                else:
+                    self.selected = None
+                    self.turn = 'b' if self.turn == 'w' else 'w'
+                    self.valid_moves = self.get_all_valid_moves()
+                    self.capture_origin = None
+            else:
+                self.selected = None
+        else:
+            piece = self.board[r][c]
+            if piece and piece.color == self.turn:
+                if self.must_continue_capture and (r, c) != self.capture_origin:
+                    return
+                self.valid_moves = self.get_all_valid_moves()
+                if (r, c) in self.valid_moves:
+                    self.selected = (r, c)
+        self.draw_board()
+    
     def in_bounds(self, r, c):
         return 0 <= r < 8 and 0 <= c < 8
 
