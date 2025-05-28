@@ -80,3 +80,8 @@ class CheckersGUI:
         moves = {}
         if self.must_continue_capture and self.capture_origin:
             captures = self.get_captures(*self.capture_origin)
+            if captures:
+                moves[self.capture_origin] = captures
+            return moves
+            
+        
