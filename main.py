@@ -84,4 +84,6 @@ class CheckersGUI:
                 moves[self.capture_origin] = captures
             return moves
             
-        
+        for r in range(8):
+            for c in range(8):
+                piece = self.board[r][c]        
