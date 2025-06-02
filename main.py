@@ -46,6 +46,11 @@ class CheckersGUI:
                     self.canvas.create_oval(x1 + 10, y1 + 10, x2 - 10, y2 - 10, fill=fill, outline=outline, width=3)
                     if piece.king:
                         self.canvas.create_text(x1 + 40, y1 + 40, text="K", fill="red", font=("Arial", 24, "bold"))
+        if self.selected:
+            sr, sc = self.selected
+            self.canvas.create_rectangle(sc * 80, sr * 80, sc * 80 + 80, sr * 80 + 80, outline="blue", width=3)
+            for (mr, mc) in self.valid_moves.get((sr, sc), []):
+                self.canvas.create_oval(mc * 80 + 30, mr * 80 + 30, mc * 80 + 50, mr * 80 + 50, fill="green")
 
     def click(self, event):
         r, c = event.y // 80, event.x // 80
