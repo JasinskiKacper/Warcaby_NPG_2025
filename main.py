@@ -92,3 +92,9 @@ class CheckersGUI:
         for r in range(8):
             for c in range(8):
                 piece = self.board[r][c]        
+                if piece and piece.color == self.turn:
+                    captures = self.get_captures(r, c)
+                    normal = self.get_moves(r, c)
+                    moves[(r, c)] = captures + normal
+
+        return {k: v for k, v in moves.items() if v}
