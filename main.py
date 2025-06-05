@@ -98,3 +98,10 @@ class CheckersGUI:
                     moves[(r, c)] = captures + normal
 
         return {k: v for k, v in moves.items() if v}
+
+def get_captures(self, r, c):
+    piece = self.board[r][c]
+    captures = []
+    if not piece:
+        return captures
+    directions =[(-1, -1), (-1, 1), (1, -1), (1, 1)]
