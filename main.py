@@ -98,3 +98,30 @@ class CheckersGUI:
                     moves[(r, c)] = captures + normal
 
         return {k: v for k, v in moves.items() if v}
+
+    def get_moves(self, r, c):
+        piece = self.board[r][c]
+        moves = []
+        if not piece:
+            return moves
+            
+        if piece.king:
+            directions = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+            for dr, dc in directions:
+                step = 1
+                while True:
+                    nr, nc = r + dr * step, c + dc * step
+                    if not self.in_bounds(nr, nc):
+                        break
+                    if self.board[nr][nc] is None:
+                        moves.append((nr, nc))
+                    else:
+                        break
+                    step += 1
+        else:
+            dr = -1 if piece.color == 'w' else 1
+            for dc in [-1, 1]:
+                nr, nc = r + dr, c + dc
+                if self.in_bounds(nr, nc) and self.board[nr][nc] is None:
+                    moves.append((nr, nc))
+        return moves
