@@ -105,3 +105,21 @@ def get_captures(self, r, c):
     if not piece:
         return captures
     directions =[(-1, -1), (-1, 1), (1, -1), (1, 1)]
+    for dr, dc in directions:
+        if piece.king:
+            step = 1
+            enemy_found = False
+            while True:
+                nr, nc = r + dr * step, c + dc * step
+                if not self.in_bounds(nr, nc):
+                    break
+                target = self.board[nr][nc]
+                if target is None:
+                    if enemy_found:
+                        captures.append((nr, nc))
+                    step += 1
+                elif target.color != piece.color and not enemy_found:
+                    enemy_found = True
+                    step += 1
+                else:
+                    break
