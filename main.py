@@ -80,7 +80,18 @@ class CheckersGUI:
     def in_bounds(self, r, c):
         return 0 <= r < 8 and 0 <= c < 8
 
+    def make_move(self, fr, fc, tr, tc):
+        piece = self.board[fr][fc]
+        self.board[tr][tc] = piece
+        self.board[fr][fc] = None
 
+        was_capture = abs(tr - fr) > 1
+
+        if was_capture:
+            dr = (tr - fr) // abs(tr - fr)
+            dc = (tc - fc) // abs(tc - fc)
+            step = 1
+    
     def get_all_valid_moves(self):
         moves = {}
         if self.must_continue_capture and self.capture_origin:
