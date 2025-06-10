@@ -87,6 +87,7 @@ class CheckersGUI:
 
         was_capture = abs(tr - fr) > 1
 
+        if was_capture:
     
     def get_all_valid_moves(self):
         moves = {}
