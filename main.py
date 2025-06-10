@@ -123,3 +123,13 @@ def get_captures(self, r, c):
                     step += 1
                 else:
                     break
+        else:
+            forward = -1 if piece.color == 'w' else 1
+            if dr == forward:
+                mr, mc = r + dr, c + dc
+                nr, nc = r + 2 * dr, c + 2 * dc
+                if self.in_bounds(nr, nc):
+                    enemy = self.board[mr][mc]
+                    if enemy and enemy.color != piece.color and self.board[nr][nc] is None:
+                        captures.append((nr, nc))
+        return captures
