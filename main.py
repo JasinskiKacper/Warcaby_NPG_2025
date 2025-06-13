@@ -92,7 +92,11 @@ class CheckersGUI:
             dc = (tc - fc) // abs(tc - fc)
             step = 1
             while True:
-                mr, mc = fr + dr * step, fc + dc * step            
+                mr, mc = fr + dr * step, fc + dc * step
+                if self.in_bounds(mr, mc) and self.board[mr][mc]:
+                    self.board[mr][mc] = None
+                    break
+                step += 1
     
     def get_all_valid_moves(self):
         moves = {}
