@@ -104,6 +104,9 @@ class CheckersGUI:
         if was_capture and self.get_captures(tr, tc):
             self.must_continue_capture = True
             self.capture_origin = (tr, tc)
+        else:
+            self.must_continue_capture = False
+            self.capture_origin = None
     
     def get_all_valid_moves(self):
         moves = {}
