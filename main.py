@@ -91,6 +91,22 @@ class CheckersGUI:
             dr = (tr - fr) // abs(tr - fr)
             dc = (tc - fc) // abs(tc - fc)
             step = 1
+            while True:
+                mr, mc = fr + dr * step, fc + dc * step
+                if self.in_bounds(mr, mc) and self.board[mr][mc]:
+                    self.board[mr][mc] = None
+                    break
+                step += 1
+
+        if (piece.color == 'w' and tr == 0) or (piece.color == 'b' and tr == 7):
+            piece.king = True
+
+        if was_capture and self.get_captures(tr, tc):
+            self.must_continue_capture = True
+            self.capture_origin = (tr, tc)
+        else:
+            self.must_continue_capture = False
+            self.capture_origin = None
     
     def get_all_valid_moves(self):
         moves = {}
