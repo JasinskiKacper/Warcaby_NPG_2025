@@ -91,6 +91,8 @@ class CheckersGUI:
             dr = (tr - fr) // abs(tr - fr)
             dc = (tc - fc) // abs(tc - fc)
             step = 1
+            while True:
+                mr, mc = fr + dr * step, fc + dc * step            
     
     def get_all_valid_moves(self):
         moves = {}
