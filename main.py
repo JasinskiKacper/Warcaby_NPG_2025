@@ -97,6 +97,9 @@ class CheckersGUI:
                     self.board[mr][mc] = None
                     break
                 step += 1
+
+        if (piece.color == 'w' and tr == 0) or (piece.color == 'b' and tr == 7):
+            piece.king = True
     
     def get_all_valid_moves(self):
         moves = {}
