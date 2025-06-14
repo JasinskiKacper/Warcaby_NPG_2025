@@ -80,7 +80,34 @@ class CheckersGUI:
     def in_bounds(self, r, c):
         return 0 <= r < 8 and 0 <= c < 8
 
+    def make_move(self, fr, fc, tr, tc):
+        piece = self.board[fr][fc]
+        self.board[tr][tc] = piece
+        self.board[fr][fc] = None
 
+        was_capture = abs(tr - fr) > 1
+
+        if was_capture:
+            dr = (tr - fr) // abs(tr - fr)
+            dc = (tc - fc) // abs(tc - fc)
+            step = 1
+            while True:
+                mr, mc = fr + dr * step, fc + dc * step
+                if self.in_bounds(mr, mc) and self.board[mr][mc]:
+                    self.board[mr][mc] = None
+                    break
+                step += 1
+
+        if (piece.color == 'w' and tr == 0) or (piece.color == 'b' and tr == 7):
+            piece.king = True
+
+        if was_capture and self.get_captures(tr, tc):
+            self.must_continue_capture = True
+            self.capture_origin = (tr, tc)
+        else:
+            self.must_continue_capture = False
+            self.capture_origin = None
+    
     def get_all_valid_moves(self):
         moves = {}
         if self.must_continue_capture and self.capture_origin:
@@ -99,6 +126,7 @@ class CheckersGUI:
 
         return {k: v for k, v in moves.items() if v}
 
+      
     def get_moves(self, r, c):
         piece = self.board[r][c]
         moves = []
@@ -125,3 +153,40 @@ class CheckersGUI:
                 if self.in_bounds(nr, nc) and self.board[nr][nc] is None:
                     moves.append((nr, nc))
         return moves
+    
+    
+    def get_captures(self, r, c):
+        piece = self.board[r][c]
+        captures = []
+        if not piece:
+            return captures
+        directions =[(-1, -1), (-1, 1), (1, -1), (1, 1)]
+        for dr, dc in directions:
+            if piece.king:
+                step = 1
+                enemy_found = False
+                while True:
+                    nr, nc = r + dr * step, c + dc * step
+                    if not self.in_bounds(nr, nc):
+                        break
+                    target = self.board[nr][nc]
+                    if target is None:
+                        if enemy_found:
+                            captures.append((nr, nc))
+                        step += 1
+                    elif target.color != piece.color and not enemy_found:
+                        enemy_found = True
+                        step += 1
+                    else:
+                        break
+            else:
+                forward = -1 if piece.color == 'w' else 1
+                if dr == forward:
+                    mr, mc = r + dr, c + dc
+                    nr, nc = r + 2 * dr, c + 2 * dc
+                    if self.in_bounds(nr, nc):
+                        enemy = self.board[mr][mc]
+                        if enemy and enemy.color != piece.color and self.board[nr][nc] is None:
+                            captures.append((nr, nc))
+            return captures
+
