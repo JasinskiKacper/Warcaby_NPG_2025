@@ -188,7 +188,7 @@ class CheckersGUI:
                         enemy = self.board[mr][mc]
                         if enemy and enemy.color != piece.color and self.board[nr][nc] is None:
                             captures.append((nr, nc))
-            return captures
+        return captures
 
 #Uruchomienie
 if __name__ == "__main__":
