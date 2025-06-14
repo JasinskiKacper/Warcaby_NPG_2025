@@ -190,3 +190,8 @@ class CheckersGUI:
                             captures.append((nr, nc))
             return captures
 
+#Uruchomienie
+if __name__ == "__main__":
+    root = tk.Tk()
+    game = CheckersGUI(root)
+    root.mainloop()
