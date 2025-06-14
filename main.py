@@ -190,3 +190,5 @@ class CheckersGUI:
                             captures.append((nr, nc))
             return captures
 
+if __name__ == "__main__":
+    root = tk.Tk()
